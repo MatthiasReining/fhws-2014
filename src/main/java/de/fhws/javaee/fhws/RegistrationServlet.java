@@ -2,6 +2,7 @@ package de.fhws.javaee.fhws;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,25 +19,15 @@ public class RegistrationServlet extends HttpServlet {
         String email = request.getParameter("email");
         String pw = request.getParameter("password");
         
-        if ("admin".equalsIgnoreCase(email)) {
-            response.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE);
-            return;
-        }
+        request.setAttribute("value", "blub blub");
         
-        System.out.println("req with " + email + "/" + pw);
-                
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegistrationServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Hallo " + email + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        response.getWriter().println("<hr>aus Registration Servlet<br>" );
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/TestServlet");
+        dispatcher.include(request, response);
+        
+        response.getWriter().println("<hr>Ende aus Registration Servlet<br>" );
+        
     }
     
     
