@@ -1,0 +1,8 @@
+bitnami@ip-172-31-1-164:/opt/bitnami/wildfly/conf$ cat wildfly.conf
+
+Redirect /fhws /fhws/
+Redirect /console /wildfly/console
+<Location /fhws/>
+    ProxyPass http://localhost:8083/fhws/
+    ProxyPassReverse http://localhost:8083/fhws/
+</Location>
