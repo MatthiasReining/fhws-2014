@@ -6,6 +6,7 @@
 package de.fhws.javaee.fhws;
 
 import java.io.Serializable;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
+    @Size(min=2, max=240)
     private String email;
     private String password;
     private String lastLogin;

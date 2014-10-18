@@ -8,13 +8,26 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        
 
-        <f:view>
+        <f:view locale="de">
+            <f:loadBundle basename="messages" var="msg" />
             <h1>Login</h1>
             <h:form>
+                
+                <h1><h:outputText value="#{msg.welcome_message}" /></h1>
+                <h:messages globalOnly="true" />
 
-                Email: <h:inputText id="email" value="#{loginController.user.email}" /><br/>
-                Password <h:inputText value="#{loginController.user.password}" /><br/>
+                Email
+                <h:inputText id="email" label="EMail" value="#{loginController.user.email}">
+                </h:inputText>
+                <h:message for="email" /><br/>
+                Password 
+                <h:inputText id="password" label="Password" value="#{loginController.user.password}">
+                    <f:validateRegex pattern="\w*"/>
+                </h:inputText>
+                <h:message for="password" /><br/>
+                <br/>
 
                 <h:commandButton value="Login" action="#{loginController.login}" />
             </h:form>
