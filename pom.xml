@@ -11,6 +11,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <wildfly-hostname>localhost</wildfly-hostname>
+        <wildfly-port>9991</wildfly-port>
+        <wildfly-username>admin</wildfly-username>
+        <wildfly-password>admin</wildfly-password>
+    
     </properties>
     
     <dependencies>
@@ -58,6 +65,18 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.2.Final</version>
+                <configuration>
+                    <hostname>${wildfly-hostname}</hostname>
+                    <port>${wildfly-port}</port>
+                    <username>${wildfly-username}</username>
+                    <password>${wildfly-password}</password>
+                </configuration>
+            </plugin>	
         </plugins>
     </build>
 
