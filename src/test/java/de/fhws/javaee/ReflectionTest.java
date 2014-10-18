@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhws.javaee;
+package de.fhws.javaee.fhws;
 
 import de.fhws.javaee.fhws.User;
 import java.lang.reflect.InvocationTargetException;
