@@ -5,11 +5,13 @@
  */
 package de.fhws.javaee.fhws;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Matthias Reining
  */
-public class User {
+public class User  implements Serializable{
 
     private String email;
     private String password;
@@ -17,6 +19,8 @@ public class User {
 
     public User() {
     }
+    
+    
 
     public User(String email, String password, String lastLogin) {
         this.email = email;

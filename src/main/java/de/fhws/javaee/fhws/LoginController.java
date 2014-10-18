@@ -5,12 +5,20 @@
  */
 package de.fhws.javaee.fhws;
 
+import com.sun.jndi.toolkit.dir.SearchFilter;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-public class LoginController {
+@SessionScoped
+public class LoginController implements Serializable {
     
-    User user = new User("max.mustermann@fhws.de", "adsfsadf", "adsf");
+    User user = new User();
+    
+    public LoginController()  {
+        System.out.println("im LoginController Constructor");
+    }
     
 
     public User getUser() {
