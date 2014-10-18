@@ -10,7 +10,7 @@
     <h:body>
         
 
-        <f:view locale="de">
+        <f:view >
             <f:loadBundle basename="messages" var="msg" />
             <h1>Login</h1>
             <h:form>
@@ -18,8 +18,14 @@
                 <h1><h:outputText value="#{msg.welcome_message}" /></h1>
                 <h:messages globalOnly="true" />
 
+                DummyValue: <h:outputText id="dummyValue" value="#{loginController.dummyValue}" />
+                <br/>
                 Email
-                <h:inputText id="email" label="EMail" value="#{loginController.user.email}">
+                <h:inputText id="email" 
+                             label="EMail" 
+                             value="#{loginController.user.email}" 
+                             valueChangeListener="#{loginController.emailChanged()}">
+                    <f:ajax event="change" execute="email" render="dummyValue"/>
                 </h:inputText>
                 <h:message for="email" /><br/>
                 Password 

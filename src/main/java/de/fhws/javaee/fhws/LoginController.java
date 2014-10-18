@@ -6,6 +6,7 @@
 package de.fhws.javaee.fhws;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
@@ -19,12 +20,19 @@ public class LoginController implements Serializable {
 
     User user = new User();
 
+    private String dummyValue;
+
     public LoginController() {
         System.out.println("im LoginController Constructor");
     }
 
     public User getUser() {
         return user;
+    }
+
+    public void emailChanged() {
+
+        dummyValue = "Das Feld email wurde geändert (alter Wert: " + user.getEmail() + " ) um " + new Date();
     }
 
     public String login() {
@@ -34,11 +42,11 @@ public class LoginController implements Serializable {
             return "user-list.xhtml?faces-redirect=true";
         } else {
 
-            //Locale loc = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-            //ResourceBundle bundle = ResourceBundle.getBundle(
-            //        FacesContext.getCurrentInstance().getApplication().getMessageBundle(), loc);
-            //String msg = bundle.getString("login_failed");
-            String msg = "login failed";
+            Locale loc = FacesContext.getCurrentInstance().getExternalContext().getRequestLocale();
+            System.out.println("Locale: " + loc);
+            ResourceBundle bundle = ResourceBundle.getBundle("messages", loc);
+            String msg = bundle.getString("login_failed");
+            //String msg = "login failed";
 
             FacesMessage m = new FacesMessage(msg);
             FacesContext.getCurrentInstance().addMessage("loginMessage", m);
@@ -48,4 +56,7 @@ public class LoginController implements Serializable {
         }
     }
 
+    public String getDummyValue() {
+        return dummyValue;
+    }
 }
