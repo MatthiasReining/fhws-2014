@@ -22,6 +22,19 @@ public class ReflectionTest {
 
         assertNotNull(user);
     }
+    
+    @Test
+    public void dummerTest() {
+        User user = new User();
+        assertEquals("max.mustermann@irgendwo.de", user.getEmail());
+    }
+    
+    @Test
+    public void dummerTest2() {
+        User user = new User();
+        if (user.getEmail().equals("max"))
+            System.out.println("max");
+    }
 
     @Test
     public void createUserByReflection() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
