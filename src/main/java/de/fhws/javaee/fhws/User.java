@@ -11,21 +11,28 @@ import java.io.Serializable;
  *
  * @author Matthias Reining
  */
-public class User  implements Serializable{
+public class User implements Serializable {
 
     private String email;
     private String password;
     private String lastLogin;
+    private Long id;
 
     public User() {
     }
-    
-    
 
     public User(String email, String password, String lastLogin) {
         this.email = email;
         this.password = password;
         this.lastLogin = lastLogin;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {

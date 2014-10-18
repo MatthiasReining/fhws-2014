@@ -5,7 +5,6 @@
  */
 package de.fhws.javaee.fhws;
 
-import com.sun.jndi.toolkit.dir.SearchFilter;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -29,7 +28,7 @@ public class LoginController implements Serializable {
         System.out.println("email: " + user.getEmail());
         
         if (user.getEmail().equals(user.getPassword()))  {
-            return "welcome.xhtml?faces-redirect=true";
+            return "user-list.xhtml?faces-redirect=true";
         } else {
             return "login.xhtml";
             
