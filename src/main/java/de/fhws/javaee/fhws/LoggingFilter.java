@@ -19,7 +19,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(filterName = "LoggingFilter", urlPatterns = {"/*"})
+//@WebFilter(filterName = "LoggingFilter", urlPatterns = {"/*"})
 public class LoggingFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response,

@@ -6,6 +6,7 @@
 package de.fhws.javaee.fhws;
 
 import de.fhws.javaee.fhws.TestServlet;
+import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -17,12 +18,12 @@ import org.junit.Before;
 public class TestServletTest {
 
     TestServlet testServlet;
-    
+
     @Before
     public void init() {
-        
+
     }
-    
+
     @Test
     public void shouldWork() {
         testServlet = new TestServlet();
