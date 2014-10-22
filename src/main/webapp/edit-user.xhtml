@@ -11,9 +11,48 @@
         <f:view>
             <h1>Edit</h1>
             <h:form>
+                <h:panelGrid columns="2" border="0" >
 
-                Email: <h:inputText id="email" value="#{editUserController.user.email}" /><br/>
-                Password <h:inputText value="#{editUserController.user.password}" /><br/>
+                    <h:outputLabel for="email" value="#{msg.emailLabel}" />
+                    <h:inputText id="email" 
+                                 label="#{msg.emailLabel}" 
+                                 value="#{editUserController.user.email}"/>
+
+                    <h:outputLabel for="password" value="#{msg.passwordLabel}" />
+                    <h:inputText id="password" 
+                                 label="#{msg.passwordLabel}" 
+                                 value="#{editUserController.user.password}"/>
+
+                    <h:outputLabel for="firstname" value="#{msg.firstnameLabel}" />
+                    <h:inputText id="firstname" 
+                                 label="#{msg.firstnameLabel}" 
+                                 value="#{editUserController.user.firstname}"/>
+
+                    <h:outputLabel for="lastname" value="#{msg.lastnameLabel}" />
+                    <h:inputText id="lastname" 
+                                 label="#{msg.lastnameLabel}" 
+                                 value="#{editUserController.user.lastname}"/>
+
+                    <h:outputLabel for="street" value="#{msg.streetLabel}" />
+                    <h:inputText id="street" 
+                                 label="#{msg.streetLabel}" 
+                                 value="#{editUserController.user.street}"/>
+
+                    <h:outputLabel for="housenumber" value="#{msg.housenumberLabel}" />
+                    <h:inputText id="housenumber" 
+                                 label="#{msg.housenumberLabel}" 
+                                 value="#{editUserController.user.housenumber}"/>
+
+                    <h:outputLabel for="zip" value="#{msg.zipLabel}" />
+                    <h:inputText id="zip" 
+                                 label="#{msg.zipLabel}" 
+                                 value="#{editUserController.user.zip}"/>
+                    
+                     <h:outputLabel for="city" value="#{msg.cityLabel}" />
+                    <h:inputText id="city" 
+                                 label="#{msg.cityLabel}" 
+                                 value="#{editUserController.user.city}"/>
+                </h:panelGrid>
 
                 <h:commandButton value="save" action="#{editUserController.save}" />
             </h:form>

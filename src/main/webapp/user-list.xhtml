@@ -24,6 +24,18 @@
                         <h:column>
                             <h:outputText value="#{user.email}" />
                         </h:column>
+                        
+                         <h:column>
+                            <h:outputText value="#{user.zip}" />
+                        </h:column>
+                        
+                         <h:column>
+                            <h:outputText value="#{user.city}" />
+                        </h:column>
+                        
+                        <h:column>
+                            <h:commandLink value="edit" action="#{editUserController.edit(user.id)}" />
+                        </h:column>
 
                     </h:dataTable>
                 </h:form>

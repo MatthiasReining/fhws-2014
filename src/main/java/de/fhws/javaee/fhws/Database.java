@@ -34,7 +34,7 @@ public class Database {
     }   
     
     public User updateUser(User user) {
-         if (user.getId() != null && user.getId() != 0)
+         if (user.getId() == null || user.getId() == 0)
             throw new RuntimeException("For update an Id has to be present!");
          users.put(user.getId(), user);
          return user;
@@ -45,8 +45,6 @@ public class Database {
     }
     
     public User persistNewUser(User user) {
-        if (user.getId() != null && user.getId() != 0)
-            return user;
         idCounter++;
         user.setId(idCounter);
         

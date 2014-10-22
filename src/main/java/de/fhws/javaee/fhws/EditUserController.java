@@ -7,7 +7,6 @@ package de.fhws.javaee.fhws;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 /**
  *
@@ -19,13 +18,14 @@ public class EditUserController {
 
     private User user;
 
-    public String edit(User user) {
-        this.user = user;
+    public String edit(long id) {
+        this.user = Database.getInstance().getUserById(id);
         return "edit-user?faces-redirect=true";
     }
     
     public String save() {
         System.out.println( user.getEmail());
+        System.out.println( user.getId());
         Database.getInstance().updateUser(user);
         return "user-list?faces-redirect=true";
     }

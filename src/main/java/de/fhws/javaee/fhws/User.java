@@ -14,9 +14,15 @@ import javax.validation.constraints.Size;
  */
 public class User implements Serializable {
 
-    @Size(min=2, max=240)
+    @Size(min = 2, max = 240)
     private String email;
     private String password;
+    private String firstname;
+    private String lastname;
+    private String street;
+    private String housenumber;
+    private String zip;
+    private String city;
     private String lastLogin;
     private Long id;
 
@@ -59,6 +65,54 @@ public class User implements Serializable {
 
     public void setLastLogin(String lastLogin) {
         this.lastLogin = lastLogin;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHousenumber() {
+        return housenumber;
+    }
+
+    public void setHousenumber(String housenumber) {
+        this.housenumber = housenumber;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
 }

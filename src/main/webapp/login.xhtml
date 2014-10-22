@@ -5,43 +5,47 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>FHWS | Login Screen</title>
     </h:head>
     <h:body>
-        
-        <h1>Jetzt online...</h1>
-        
 
         <f:view >
-            <f:loadBundle basename="messages" var="msg" />
+           
             <h1>Login</h1>
             <h:form>
-                
-                <h1><h:outputText value="#{msg.welcome_message}" /></h1>
+
+                <h1><h:outputText value="#{msg.welcomeMessage}" /></h1>
                 <h:messages globalOnly="true" />
 
                 DummyValue: <h:outputText id="dummyValue" value="#{loginController.dummyValue}" />
                 <br/>
-                Email
-                <h:inputText id="email" 
-                             label="EMail" 
-                             value="#{loginController.user.email}" 
-                             valueChangeListener="#{loginController.emailChanged()}">
-                    <f:ajax event="change" execute="email" render="dummyValue"/>
-                </h:inputText>
-                <h:message for="email" /><br/>
-                Password 
-                <h:inputText id="password" label="Password" value="#{loginController.user.password}">
-                    <f:validateRegex pattern="\w*"/>
-                </h:inputText>
-                <h:message for="password" /><br/>
-                <br/>
+                <h:panelGrid columns="2" border="0" >
+                    <h:outputLabel for="email" value="#{msg.emailLabel}" />
+                    <h:inputText id="email" 
+                                 label="#{msg.emailLabel}" 
+                                 valueChangeListener="#{loginController.emailChanged()}"
+                                 value="#{loginController.user.email}">
+                        <f:ajax event="change" execute="email" render="dummyValue"/>
+                    </h:inputText>
+                    <h:outputText/>
+                    <h:message for="email" />
+
+                    <h:outputLabel for="password" value="#{msg.passwordLabel}" />
+                    <h:inputText id="password" 
+                                 label="#{msg.passwordLabel}" 
+                                 value="#{loginController.user.password}">
+                        <f:validateRegex pattern="\w*"/>
+                    </h:inputText>
+                    <h:outputText/>
+                    <h:message for="password" />
+                </h:panelGrid>
+                
 
                 <h:commandButton value="Login" action="#{loginController.login}" />
             </h:form>
 
         </f:view>
-        
+
         <ui:include src="WEB-INF/facelets/footer.xhtml" />
     </h:body>
 </html>

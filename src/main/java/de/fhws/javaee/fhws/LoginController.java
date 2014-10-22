@@ -50,6 +50,7 @@ public class LoginController implements Serializable {
 
             FacesMessage m = new FacesMessage(msg);
             FacesContext.getCurrentInstance().addMessage("loginMessage", m);
+            
 
             return "login.xhtml";
 
