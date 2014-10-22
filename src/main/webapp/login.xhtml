@@ -24,7 +24,7 @@
                     <h:inputText id="email" 
                                  label="#{msg.emailLabel}" 
                                  valueChangeListener="#{loginController.emailChanged()}"
-                                 value="#{loginController.user.email}">
+                                 value="#{loginController.email}">
                         <f:ajax event="change" execute="email" render="dummyValue"/>
                     </h:inputText>
                     <h:outputText/>
@@ -33,7 +33,7 @@
                     <h:outputLabel for="password" value="#{msg.passwordLabel}" />
                     <h:inputText id="password" 
                                  label="#{msg.passwordLabel}" 
-                                 value="#{loginController.user.password}">
+                                 value="#{loginController.password}">
                         <f:validateRegex pattern="\w*"/>
                     </h:inputText>
                     <h:outputText/>

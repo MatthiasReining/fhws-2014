@@ -3,7 +3,7 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <ui:define name="head">
         <title>FHWS - User Liste</title>
     </ui:define>
@@ -24,26 +24,30 @@
                         <h:column>
                             <h:outputText value="#{user.email}" />
                         </h:column>
-                        
-                         <h:column>
+
+                        <h:column>
                             <h:outputText value="#{user.zip}" />
                         </h:column>
-                        
-                         <h:column>
+
+                        <h:column>
                             <h:outputText value="#{user.city}" />
                         </h:column>
-                        
+
                         <h:column>
                             <h:commandLink value="edit" action="#{editUserController.edit(user.id)}" />
                         </h:column>
 
                     </h:dataTable>
+
+                    <h:column>
+                        <h:commandButton value="new" action="#{editUserController.newUser}" />
+                    </h:column>
                 </h:form>
             </f:view>
         </h:body>
 
     </ui:define>
-    
+
     <ui:define name="footer">
         <ui:include src="WEB-INF/facelets/footer.xhtml" />
     </ui:define>

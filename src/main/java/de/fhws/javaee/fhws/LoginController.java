@@ -18,7 +18,10 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class LoginController implements Serializable {
 
-    User user = new User();
+    private String email;
+    private String password;
+    
+    private User user;
 
     private String dummyValue;
 
@@ -32,13 +35,14 @@ public class LoginController implements Serializable {
 
     public void emailChanged() {
 
-        dummyValue = "Das Feld email wurde geändert (alter Wert: " + user.getEmail() + " ) um " + new Date();
+        dummyValue = "Das Feld email wurde geändert (alter Wert: " + email + " ) um " + new Date();
     }
-
+    
     public String login() {
-        System.out.println("email: " + user.getEmail());
-
-        if (user.getEmail().equals(user.getPassword())) {
+        User testUser = Database.getInstance().getUserByEmail(email);
+        
+        if (testUser != null && testUser.checkPassword(password)) {
+            user = testUser;
             return "user-list.xhtml?faces-redirect=true";
         } else {
 
@@ -60,4 +64,22 @@ public class LoginController implements Serializable {
     public String getDummyValue() {
         return dummyValue;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
 }

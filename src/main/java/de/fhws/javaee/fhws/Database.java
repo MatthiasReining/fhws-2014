@@ -40,6 +40,15 @@ public class Database {
          return user;
     }
     
+    public User getUserByEmail(String email) {
+        if (email == null) return null;
+        for (User user: users.values()) {
+            if (email.equals(user.getEmail()))
+                return user;
+        }
+        return null;
+    }
+    
     public User getUserById(long id) {
         return users.get(id);
     }

@@ -34,6 +34,11 @@ public class User implements Serializable {
         this.password = password;
         this.lastLogin = lastLogin;
     }
+    
+    public boolean checkPassword(String testPassword) {
+        if (testPassword == null) return false;
+        return (testPassword.equals(this.password));
+    }
 
     public Long getId() {
         return id;

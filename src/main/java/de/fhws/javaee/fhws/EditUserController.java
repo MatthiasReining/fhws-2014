@@ -22,11 +22,19 @@ public class EditUserController {
         this.user = Database.getInstance().getUserById(id);
         return "edit-user?faces-redirect=true";
     }
-    
+
+    public String newUser() {
+        this.user = new User();
+        return "edit-user?faces-redirect=true";
+    }
+
     public String save() {
-        System.out.println( user.getEmail());
-        System.out.println( user.getId());
-        Database.getInstance().updateUser(user);
+        System.out.println(user.getEmail());
+        System.out.println(user.getId());
+        if (user.getId() == null)
+            Database.getInstance().persistNewUser(user);
+        else
+            Database.getInstance().updateUser(user);
         return "user-list?faces-redirect=true";
     }
 
