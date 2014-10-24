@@ -5,8 +5,19 @@
  */
 package de.fhws.javaee.fhws;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 /**
  *
@@ -15,11 +26,17 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class EditUserController {
+    
+    @PersistenceContext
+    EntityManager em;
+    
+    @Resource
+    UserTransaction ut;
 
     private User user;
 
     public String edit(long id) {
-        this.user = Database.getInstance().getUserById(id);
+        this.user = em.find(User.class, id);
         return "edit-user?faces-redirect=true";
     }
 
@@ -29,13 +46,21 @@ public class EditUserController {
     }
 
     public String save() {
-        System.out.println(user.getEmail());
-        System.out.println(user.getId());
-        if (user.getId() == null)
-            Database.getInstance().persistNewUser(user);
-        else
-            Database.getInstance().updateUser(user);
-        return "user-list?faces-redirect=true";
+        try {
+            System.out.println(user.getEmail());
+            System.out.println(user.getId());
+            
+            ut.begin();
+            if (user.getId() == null)
+                em.persist(user);
+            else
+                em.merge(user);
+            ut.commit();
+            return "user-list?faces-redirect=true";
+            
+        } catch (NotSupportedException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SecurityException | IllegalStateException | SystemException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     public User getUser() {

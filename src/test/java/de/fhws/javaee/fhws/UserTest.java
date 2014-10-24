@@ -5,6 +5,7 @@
  */
 package de.fhws.javaee.fhws;
 
+import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,12 +21,12 @@ public class UserTest {
     @Test
     public void increaseTestCoverage() {
         User user = new User();
-        user = new User("max.mustermann", "adf", "sfasf");
+        user = new User("max.mustermann", "adf", new Date());
         user.getEmail();
         user.getLastLogin();
         user.getPassword();
         user.setEmail("asdf");
-        user.setLastLogin("asdfasdg");
+        user.setLastLogin(new Date());
         user.setPassword("adsfasf");
                 
                 

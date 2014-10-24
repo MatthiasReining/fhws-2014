@@ -7,6 +7,9 @@ package de.fhws.javaee.fhws;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -14,9 +17,14 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class UserListController {
+    
+    @PersistenceContext
+    EntityManager em;
         
     public List<User> getUserList() {
-        return Database.getInstance().getAllUsers();
+                
+        return em.createNamedQuery(User.FIND_ALL, User.class).getResultList();
+        
     }
     
     

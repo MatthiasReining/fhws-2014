@@ -7,16 +7,22 @@ package de.fhws.javaee.fhws;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @ManagedBean
 @SessionScoped
 public class LoginController implements Serializable {
+    
+    @PersistenceContext
+    EntityManager em;
 
     private String email;
     private String password;
@@ -39,7 +45,15 @@ public class LoginController implements Serializable {
     }
     
     public String login() {
-        User testUser = Database.getInstance().getUserByEmail(email);
+        
+        List<User> users = em.createNamedQuery(User.FIND_BY_EMAIL, User.class)
+                .setParameter(User.PARAM_EMAIL, email)
+                .getResultList();
+        
+        User testUser = null;
+        if (users.size() > 0)
+            testUser = users.get(0);
+        
         
         if (testUser != null && testUser.checkPassword(password)) {
             user = testUser;
