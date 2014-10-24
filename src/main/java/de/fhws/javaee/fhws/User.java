@@ -36,8 +36,7 @@ public class User implements Serializable {
     }
     
     public boolean checkPassword(String testPassword) {
-        if (testPassword == null) return false;
-        return (testPassword.equals(this.password));
+        return new PWService().checkPW(testPassword, this.password);
     }
 
     public Long getId() {
