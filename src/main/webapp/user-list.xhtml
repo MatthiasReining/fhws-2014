@@ -10,38 +10,58 @@
     <ui:define name="content">
 
         <h:body>
-            User Liste
+            <h2>User Liste</h2>
 
             <f:view>
                 <h:form>
-                    <h:dataTable value="#{userListController.userList}" var="user">
+                    <div class="container">
+                        <h:dataTable value="#{userListController.userList}" 
+                                     var="user"
+                                     class="table table-striped"
+                                     >
 
-                        <h:column>
-                            <h:outputText value="#{user.id}" />
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Id" />
+                                </f:facet>
+                                <h:outputText value="#{user.id}" />
+                            </h:column>
 
 
-                        <h:column>
-                            <h:outputText value="#{user.email}" />
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{msg.emailLabel}" />
+                                </f:facet>
+                                <h:outputText value="#{user.email}" />
+                            </h:column>
 
-                        <h:column>
-                            <h:outputText value="#{user.zip}" />
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{msg.zipLabel}" />
+                                </f:facet>
+                                <h:outputText value="#{user.zip}" />
+                            </h:column>
 
-                        <h:column>
-                            <h:outputText value="#{user.city}" />
-                        </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{msg.cityLabel}" />
+                                </f:facet>
+                                <h:outputText value="#{user.city}" />
+                            </h:column>
 
-                        <h:column>
-                            <h:commandLink value="edit" action="#{editUserController.edit(user.id)}" />
-                        </h:column>
+                            <h:column>
+                                <h:commandLink value="edit" action="#{editUserController.edit(user.id)}" />
+                            </h:column>
 
-                    </h:dataTable>
+                        </h:dataTable>
+                        
+                        <h:commandButton value="New user" 
+                                         class="btn btn-primary"
+                                         action="#{editUserController.newUser}" />
+                    </div>
 
-                    <h:column>
-                        <h:commandButton value="new" action="#{editUserController.newUser}" />
-                    </h:column>
+                    
+
                 </h:form>
             </f:view>
         </h:body>

@@ -3,50 +3,108 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        
+        <style>
+            body {
+                padding-top: 40px;
+                padding-bottom: 40px;
+                background-color: #eee;
+            }
+
+            .form-signin {
+                max-width: 330px;
+                padding: 15px;
+                margin: 0 auto;
+            }
+            .form-signin .form-signin-heading,
+            .form-signin .checkbox {
+                margin-bottom: 10px;
+            }
+            .form-signin .checkbox {
+                font-weight: normal;
+            }
+            .form-signin .form-control {
+                position: relative;
+                height: auto;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                padding: 10px;
+                font-size: 16px;
+            }
+            .form-signin .form-control:focus {
+                z-index: 2;
+            }
+            .form-signin input[type="email"] {
+                margin-bottom: -1px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+            .form-signin input[type="password"] {
+                margin-bottom: 10px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        </style>
+
         <title>FHWS | Login Screen</title>
     </h:head>
     <h:body>
 
         <f:view >
-           
-            <h1>Login</h1>
-            <h:form>
 
-                <h1><h:outputText value="#{msg.welcomeMessage}" /></h1>
-                <h:messages globalOnly="true" />
+            <div class="container">
 
-                DummyValue: <h:outputText id="dummyValue" value="#{loginController.dummyValue}" />
-                <br/>
-                <h:panelGrid columns="2" border="0" >
-                    <h:outputLabel for="email" value="#{msg.emailLabel}" />
-                    <h:inputText id="email" 
+                <h:form class="form-signin" role="form">
+                    DummyValue: <h:outputText id="dummyValue" value="#{loginController.dummyValue}" />
+                    <h:messages globalOnly="true" />
+
+                    <h2 class="form-signin-heading">Please sign in</h2>
+
+
+                    <h:inputText id="email"                                      
+                                 class="form-control"                                  
+                                 p:type="email"
+                                 p:placeholder="#{msg.emailLabel}"                                 
+                                 p:autofocus = "true"
+                                 required = "true"
                                  label="#{msg.emailLabel}" 
                                  valueChangeListener="#{loginController.emailChanged()}"
                                  value="#{loginController.email}">
                         <f:ajax event="change" execute="email" render="dummyValue"/>
-                    </h:inputText>
-                    <h:outputText/>
+                    </h:inputText>                     
                     <h:message for="email" />
 
-                    <h:outputLabel for="password" value="#{msg.passwordLabel}" />
-                    <h:inputText id="password" 
-                                 label="#{msg.passwordLabel}" 
-                                 value="#{loginController.password}">
-                        <f:validateRegex pattern="\w*"/>
-                    </h:inputText>
+                    <h:inputSecret id="password" 
+                                   class="form-control"                                   
+                                   p:placeholder="#{msg.passwordLabel}"
+                                   required = "true"
+                                   label="#{msg.passwordLabel}" 
+                                   value="#{loginController.password}" />
                     <h:outputText/>
                     <h:message for="password" />
-                </h:panelGrid>
-                
 
-                <h:commandButton value="Login" action="#{loginController.login}" />
-            </h:form>
-
+                    <h:commandButton value="Login" 
+                                     action="#{loginController.login}" 
+                                     class="btn btn-lg btn-primary btn-block"/>
+                    
+                </h:form>
+            </div>
         </f:view>
 
-        <ui:include src="WEB-INF/facelets/footer.xhtml" />
     </h:body>
 </html>
 

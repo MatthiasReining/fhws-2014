@@ -1,63 +1,111 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
+<ui:composition template="WEB-INF/facelets/template.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-        <f:view>
-            <h1>Edit</h1>
-            <h:form>
-                <h:panelGrid columns="2" border="0" >
+    <ui:define name="head">
+        <title>FHWS - User Liste</title>
+    </ui:define>
+    <ui:define name="content">
+        <h:body>
 
-                    <h:outputLabel for="email" value="#{msg.emailLabel}" />
-                    <h:inputText id="email" 
-                                 label="#{msg.emailLabel}" 
-                                 value="#{editUserController.user.email}"/>
+            <f:view>
+                <div class="container">
+                    <h:form class="form-horizontal" role="form">
 
-                    <h:outputLabel for="password" value="#{msg.passwordLabel}" />
-                    <h:inputText id="password" 
-                                 label="#{msg.passwordLabel}" 
-                                 value="#{editUserController.user.password}"/>
+                        <div class="panel panel-info">
+                            <div class="panel-heading"> 
+                                <h3 class="panel-title">Edit user</h3>
+                            </div>
+                            <div class="panel-body">
 
-                    <h:outputLabel for="firstname" value="#{msg.firstnameLabel}" />
-                    <h:inputText id="firstname" 
-                                 label="#{msg.firstnameLabel}" 
-                                 value="#{editUserController.user.firstname}"/>
 
-                    <h:outputLabel for="lastname" value="#{msg.lastnameLabel}" />
-                    <h:inputText id="lastname" 
-                                 label="#{msg.lastnameLabel}" 
-                                 value="#{editUserController.user.lastname}"/>
+                                <div class="form-group">
+                                    <h:outputLabel for="email" value="#{msg.emailLabel}" class="col-sm-2 control-label"/>
+                                    <div class="col-sm-8">
+                                        <h:inputText id="email" 
+                                                     class="form-control"
+                                                     value="#{editUserController.user.email}"/>
+                                    </div>
+                                </div>
 
-                    <h:outputLabel for="street" value="#{msg.streetLabel}" />
-                    <h:inputText id="street" 
-                                 label="#{msg.streetLabel}" 
-                                 value="#{editUserController.user.street}"/>
 
-                    <h:outputLabel for="housenumber" value="#{msg.housenumberLabel}" />
-                    <h:inputText id="housenumber" 
-                                 label="#{msg.housenumberLabel}" 
-                                 value="#{editUserController.user.housenumber}"/>
+                                <div class="form-group">
+                                    <h:outputLabel for="firstname" value="#{msg.firstnameLabel}" class="col-sm-2 control-label"/>
+                                    <div class="col-sm-8">
+                                        <h:inputText id="firstname"  
+                                                     class="form-control"
+                                                     value="#{editUserController.user.firstname}"/>
+                                    </div>
+                                </div>
 
-                    <h:outputLabel for="zip" value="#{msg.zipLabel}" />
-                    <h:inputText id="zip" 
-                                 label="#{msg.zipLabel}" 
-                                 value="#{editUserController.user.zip}"/>
-                    
-                     <h:outputLabel for="city" value="#{msg.cityLabel}" />
-                    <h:inputText id="city" 
-                                 label="#{msg.cityLabel}" 
-                                 value="#{editUserController.user.city}"/>
-                </h:panelGrid>
+                                <div class="form-group">
+                                    <h:outputLabel for="lastname" value="#{msg.lastnameLabel}" class="col-sm-2 control-label"/>
+                                    <div class="col-sm-8">
+                                        <h:inputText id="lastname" 
+                                                     class="form-control"
+                                                     value="#{editUserController.user.lastname}"/>
+                                    </div>
+                                </div>
 
-                <h:commandButton value="save" action="#{editUserController.save}" />
-            </h:form>
+                                <div class="form-group">
+                                    <h:outputLabel for="street" value="#{msg.streetLabel}" class="col-sm-2 control-label"/>
+                                    <div class="col-sm-8">
+                                        <h:inputText id="street" 
+                                                     class="form-control"
+                                                     value="#{editUserController.user.street}"/>
+                                    </div>
+                                </div>
 
-        </f:view>
-    </h:body>
-</html>
 
+                                <div class="form-group">
+                                    <h:outputLabel for="housenumber" value="#{msg.housenumberLabel}" class="col-sm-2 control-label"/>
+                                    <div class="col-sm-8">
+                                        <h:inputText id="housenumber" 
+                                                     class="form-control"
+                                                     value="#{editUserController.user.housenumber}"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <h:outputLabel for="housenumber" value="#{msg.zipLabel}" class="col-sm-2 control-label"/>
+                                    <div class="col-sm-8">
+                                        <h:inputText id="zip" 
+                                                     class="form-control"
+                                                     value="#{editUserController.user.zip}"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <h:outputLabel for="housenumber" value="#{msg.cityLabel}" class="col-sm-2 control-label"/>
+                                    <div class="col-sm-8">
+                                        <h:inputText id="city" 
+                                                     class="form-control"
+                                                     value="#{editUserController.user.city}"/>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                            <div class="panel-footer">
+                                <h:commandButton value="save" 
+                                                 action="#{editUserController.save}" 
+                                                 class="btn btn-primary"/>
+                            </div>
+                        </div>
+
+                    </h:form>
+                </div>
+            </f:view>
+        </h:body>
+    </ui:define>
+
+    <ui:define name="footer">
+        <ui:include src="WEB-INF/facelets/footer.xhtml" />
+    </ui:define>
+</ui:composition>
