@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhws.javaee.fhws;
+package de.fhws.javaee.fhws.business.usermanagement.entity;
 
+import de.fhws.javaee.fhws.business.usermanagement.controller.PWService;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;

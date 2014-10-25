@@ -6,7 +6,7 @@
     </context-param>
     <listener>
         <description>HttpSessionListener</description>
-        <listener-class>de.fhws.javaee.fhws.TimeoutListener</listener-class>
+        <listener-class>de.fhws.javaee.fhws.presentation.listener.TimeoutListener</listener-class>
     </listener>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>

@@ -5,6 +5,7 @@
  */
 package de.fhws.javaee.fhws;
 
+import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.junit.Test;

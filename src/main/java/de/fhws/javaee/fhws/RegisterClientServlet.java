@@ -5,32 +5,32 @@
  */
 package de.fhws.javaee.fhws;
 
-import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Matthias Reining
- */
-@WebServlet(name = "SessionTestServlet", urlPatterns = {"/SessionTestServlet"})
-public class SessionTestServlet extends HttpServlet {
+@WebServlet("/RegisterClientServlet")
+public class RegisterClientServlet extends HttpServlet {
 
+    @EJB
+    RegisterBeanLocal register;
+    
+    @EJB
+    ComplexService1 cls;
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        HttpSession session = req.getSession(true);
-        FHWSUser sessionUser = (FHWSUser) session.getAttribute("user");
+        String result = register.persistLocal();
         
-        System.out.println("user: " + sessionUser.getEmail());
-        resp.getOutputStream().println("Hallo: " + sessionUser.getEmail());
+        resp.getWriter().println(cls.calculate(20));
+        
+        resp.getWriter().println(result);
+        resp.getWriter().println("OK");
     }
 
-  
 }

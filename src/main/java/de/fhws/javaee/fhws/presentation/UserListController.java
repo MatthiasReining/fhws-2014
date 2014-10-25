@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhws.javaee.fhws;
+package de.fhws.javaee.fhws.presentation;
 
+import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
+import de.fhws.javaee.fhws.business.usermanagement.boundary.UserService;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  *
@@ -17,15 +17,12 @@ import javax.persistence.Query;
  */
 @ManagedBean
 public class UserListController {
-    
-    @PersistenceContext
-    EntityManager em;
-        
+
+    @EJB
+    UserService userService;
+
     public List<FHWSUser> getUserList() {
-                
-        return em.createNamedQuery(FHWSUser.FIND_ALL, FHWSUser.class).getResultList();
-        
+        return userService.getAllFHWSUsers();
     }
-    
-    
+
 }

@@ -5,6 +5,7 @@
  */
 package de.fhws.javaee.fhws;
 
+import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;

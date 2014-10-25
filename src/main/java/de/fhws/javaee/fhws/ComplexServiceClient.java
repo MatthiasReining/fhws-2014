@@ -5,32 +5,27 @@
  */
 package de.fhws.javaee.fhws;
 
-import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Matthias Reining
- */
-@WebServlet(name = "SessionTestServlet", urlPatterns = {"/SessionTestServlet"})
-public class SessionTestServlet extends HttpServlet {
+@WebServlet("/ComplexServiceClient")
+public class ComplexServiceClient extends HttpServlet {
 
+    @EJB
+    ComplexService1 cl1;
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int result = cl1.calculate(5);
         
-        HttpSession session = req.getSession(true);
-        FHWSUser sessionUser = (FHWSUser) session.getAttribute("user");
-        
-        System.out.println("user: " + sessionUser.getEmail());
-        resp.getOutputStream().println("Hallo: " + sessionUser.getEmail());
+        resp.getWriter().println("Result: "+ result);
     }
-
-  
+    
+    
+    
 }

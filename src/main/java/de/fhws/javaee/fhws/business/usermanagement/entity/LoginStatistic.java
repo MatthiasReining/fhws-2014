@@ -1,5 +1,6 @@
-package de.fhws.javaee.fhws;
+package de.fhws.javaee.fhws.business.usermanagement.entity;
 
+import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;

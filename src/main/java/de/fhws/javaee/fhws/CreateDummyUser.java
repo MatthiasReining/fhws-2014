@@ -5,6 +5,8 @@
  */
 package de.fhws.javaee.fhws;
 
+import de.fhws.javaee.fhws.business.usermanagement.controller.PWService;
+import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;

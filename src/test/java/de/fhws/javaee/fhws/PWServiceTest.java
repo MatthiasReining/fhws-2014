@@ -5,6 +5,7 @@
  */
 package de.fhws.javaee.fhws;
 
+import de.fhws.javaee.fhws.business.usermanagement.controller.PWService;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

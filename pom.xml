@@ -48,7 +48,17 @@
             <artifactId>h2</artifactId>
             <version>1.4.181</version>
             <scope>test</scope>
-        </dependency>      
+        </dependency>   
+        <!--
+        TODO Beispiel für EJB Remote Verbindung machen
+        <dependency>
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-ejb-client-bom</artifactId>
+            <version>7.2.0.Final</version>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
+        -->
     </dependencies>
 
     <build>
