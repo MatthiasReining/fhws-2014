@@ -5,7 +5,6 @@
  */
 package de.fhws.javaee.fhws;
 
-import de.fhws.javaee.fhws.User;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.junit.Test;
@@ -18,7 +17,7 @@ public class ReflectionTest {
 
     @Test
     public void createUser() {
-        User user = new User();
+        FHWSUser user = new FHWSUser();
 
         assertNotNull(user);
     }
@@ -26,9 +25,9 @@ public class ReflectionTest {
     @Test
     public void createUserByReflection() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 
-        Class clazz = Class.forName("de.fhws.javaee.fhws.User");
+        Class clazz = Class.forName("de.fhws.javaee.fhws.FHWSUser");
         Object obj = clazz.newInstance();
-        User user = (User) obj;
+        FHWSUser user = (FHWSUser) obj;
 
         assertNotNull(user);
     }

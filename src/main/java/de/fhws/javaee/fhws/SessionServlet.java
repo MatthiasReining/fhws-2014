@@ -28,7 +28,7 @@ public class SessionServlet extends HttpServlet {
 
         HttpSession session = req.getSession(true);
         String userText = req.getParameter("email");
-        User user = new User(userText, null, null);
+        FHWSUser user = new FHWSUser(userText, null, null);
         
         counter++;
         
@@ -36,7 +36,7 @@ public class SessionServlet extends HttpServlet {
         
         session.setAttribute("user", user);
         
-        User sessionUser = (User) session.getAttribute("user");
+        FHWSUser sessionUser = (FHWSUser) session.getAttribute("user");
         
         System.out.println("user: " + sessionUser.getEmail());
         resp.getOutputStream().println("bin da..." + sessionUser.getEmail() + "     counter: " + counter);

@@ -43,9 +43,9 @@ public class CreateDummyUser extends HttpServlet {
 
         try {
             ut.begin();
-            em.persist(new User("max.mustermann@fhws.de", new PWService().createPWHash("max"), new Date()));
-            em.persist(new User("donald.duck@fhws.de", new PWService().createPWHash("donald"), new Date()));
-            em.persist(new User("mickey.mouse@fhws.de", new PWService().createPWHash("mickey"), new Date()));
+            em.persist(new FHWSUser("max.mustermann@fhws.de", new PWService().createPWHash("max"), new Date()));
+            em.persist(new FHWSUser("donald.duck@fhws.de", new PWService().createPWHash("donald"), new Date()));
+            em.persist(new FHWSUser("mickey.mouse@fhws.de", new PWService().createPWHash("mickey"), new Date()));
             ut.commit();
         } catch (NotSupportedException | SystemException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SecurityException | IllegalStateException ex) {
             Logger.getLogger(CreateDummyUser.class.getName()).log(Level.SEVERE, null, ex);

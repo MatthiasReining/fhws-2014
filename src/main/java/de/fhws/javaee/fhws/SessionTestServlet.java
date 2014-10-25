@@ -25,7 +25,7 @@ public class SessionTestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         HttpSession session = req.getSession(true);
-        User sessionUser = (User) session.getAttribute("user");
+        FHWSUser sessionUser = (FHWSUser) session.getAttribute("user");
         
         System.out.println("user: " + sessionUser.getEmail());
         resp.getOutputStream().println("Hallo: " + sessionUser.getEmail());

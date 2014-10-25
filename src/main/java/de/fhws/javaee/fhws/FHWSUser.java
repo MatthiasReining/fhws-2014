@@ -7,28 +7,29 @@ package de.fhws.javaee.fhws;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 
 @Entity
 @NamedQueries({
     @NamedQuery(
-            name = User.FIND_BY_EMAIL,
-            query = "SELECT u FROM User u WHERE u.email = :" + User.PARAM_EMAIL
+            name = FHWSUser.FIND_BY_EMAIL,
+            query = "SELECT u FROM FHWSUser u WHERE u.email = :" + FHWSUser.PARAM_EMAIL
     ),
     @NamedQuery(
-            name = User.FIND_ALL,
-            query = "SELECT u FROM User u"
+            name = FHWSUser.FIND_ALL,
+            query = "SELECT u FROM FHWSUser u"
     )})
-public class User implements Serializable {
+public class FHWSUser implements Serializable {
 
     public static final String FIND_BY_EMAIL = "User.FinyByEMail";
     public static final String FIND_ALL = "User.findAll";
@@ -48,6 +49,9 @@ public class User implements Serializable {
     private String street;
     private String housenumber;
 
+    @OneToMany(mappedBy = "fhwsUser", cascade = CascadeType.ALL)
+    private List<LoginStatistic> loginStatistics;
+
     @Size(max = 10)
     private String zip;
     private String city;
@@ -55,10 +59,10 @@ public class User implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date lastLogin;
 
-    public User() {
+    public FHWSUser() {
     }
 
-    public User(String email, String password, Date lastLogin) {
+    public FHWSUser(String email, String password, Date lastLogin) {
         this.email = email;
         this.password = password;
         this.lastLogin = lastLogin;
@@ -146,6 +150,14 @@ public class User implements Serializable {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<LoginStatistic> getLoginStatistics() {
+        return loginStatistics;
+    }
+
+    public void setLoginStatistics(List<LoginStatistic> loginStatistics) {
+        this.loginStatistics = loginStatistics;
     }
 
 }

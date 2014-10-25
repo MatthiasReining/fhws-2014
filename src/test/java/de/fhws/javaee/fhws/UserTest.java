@@ -20,8 +20,8 @@ public class UserTest {
 
     @Test
     public void increaseTestCoverage() {
-        User user = new User();
-        user = new User("max.mustermann", "adf", new Date());
+        FHWSUser user = new FHWSUser();
+        user = new FHWSUser("max.mustermann", "adf", new Date());
         user.getEmail();
         user.getLastLogin();
         user.getPassword();

@@ -33,15 +33,15 @@ public class EditUserController {
     @Resource
     UserTransaction ut;
 
-    private User user;
+    private FHWSUser user;
 
     public String edit(long id) {
-        this.user = em.find(User.class, id);
+        this.user = em.find(FHWSUser.class, id);
         return "edit-user?faces-redirect=true";
     }
 
     public String newUser() {
-        this.user = new User();
+        this.user = new FHWSUser();
         return "edit-user?faces-redirect=true";
     }
 
@@ -63,7 +63,7 @@ public class EditUserController {
         }
     }
 
-    public User getUser() {
+    public FHWSUser getUser() {
         return user;
     }
 

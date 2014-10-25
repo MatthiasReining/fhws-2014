@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//@WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
+@WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
 public class LoginFilter implements Filter {
 
     @Override
@@ -35,7 +35,11 @@ public class LoginFilter implements Filter {
 
         LoginController lc = (LoginController) ((HttpServletRequest) request).getSession(true).getAttribute("loginController");
         boolean userNotLoggedIn = (lc == null || lc.getUser() == null);
-        boolean loginPage = ((HttpServletRequest) request).getRequestURI().contains("login.xhtml");
+        
+        String requestResource = ((HttpServletRequest) request).getRequestURI().toLowerCase();
+        boolean loginPage = requestResource.contains("login") 
+                || requestResource.contains("jsf.js")
+                || requestResource.contains("createdummyuser");
 
         if (userNotLoggedIn && !loginPage) { //user not logged in, redirect to login page
             ((HttpServletResponse) response).sendRedirect("login.xhtml");

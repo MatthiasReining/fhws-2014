@@ -21,9 +21,9 @@ public class UserListController {
     @PersistenceContext
     EntityManager em;
         
-    public List<User> getUserList() {
+    public List<FHWSUser> getUserList() {
                 
-        return em.createNamedQuery(User.FIND_ALL, User.class).getResultList();
+        return em.createNamedQuery(FHWSUser.FIND_ALL, FHWSUser.class).getResultList();
         
     }
     

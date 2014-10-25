@@ -82,7 +82,7 @@
                                  p:autofocus = "true"
                                  required = "true"
                                  label="#{msg.emailLabel}" 
-                                 valueChangeListener="#{loginController.emailChanged()}"
+                                 valueChangeListener="#{loginController.emailChanged}"
                                  value="#{loginController.email}">
                         <f:ajax event="change" execute="email" render="dummyValue"/>
                     </h:inputText>                     
