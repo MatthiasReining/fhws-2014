@@ -101,6 +101,37 @@
 
                     </h:form>
                 </div>
+                
+                
+                <hr/>
+                <h2>User Statistik</h2>
+                <h:form>
+                    <h:dataTable value="#{editUserController.user.loginStatistics}" var="loginStatistic">
+                          <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Id" />
+                                </f:facet>
+                                <h:outputText value="#{loginStatistic.id}" />
+                            </h:column>
+
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IP Address" />
+                                </f:facet>
+                                <h:outputText value="#{loginStatistic.ipAddress}" />
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Login Time" />
+                                </f:facet>
+                                <h:outputText value="#{loginStatistic.loginTime}" />
+                            </h:column>
+                    </h:dataTable>
+                </h:form>
+
+                    
             </f:view>
         </h:body>
     </ui:define>

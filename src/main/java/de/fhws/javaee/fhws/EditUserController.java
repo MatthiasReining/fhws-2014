@@ -5,8 +5,6 @@
  */
 package de.fhws.javaee.fhws;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -26,17 +24,21 @@ import javax.transaction.UserTransaction;
 @ManagedBean
 @SessionScoped
 public class EditUserController {
-    
+
     @PersistenceContext
     EntityManager em;
-    
+
     @Resource
     UserTransaction ut;
 
     private FHWSUser user;
 
-    public String edit(long id) {
+    public String edit(long id) throws RollbackException, HeuristicMixedException, HeuristicRollbackException, SecurityException, IllegalStateException, SystemException, NotSupportedException {
+        ut.begin();
         this.user = em.find(FHWSUser.class, id);
+        //Trick um LazyLoading Exception zu vermeiden (alternative: Eager Loading)
+        //System.out.println("--> " + this.user.getLoginStatistics().size());
+        ut.commit();
         return "edit-user?faces-redirect=true";
     }
 
@@ -49,7 +51,7 @@ public class EditUserController {
         try {
             System.out.println(user.getEmail());
             System.out.println(user.getId());
-            
+
             ut.begin();
             if (user.getId() == null)
                 em.persist(user);
@@ -57,7 +59,7 @@ public class EditUserController {
                 em.merge(user);
             ut.commit();
             return "user-list?faces-redirect=true";
-            
+
         } catch (NotSupportedException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SecurityException | IllegalStateException | SystemException ex) {
             throw new RuntimeException(ex);
         }
