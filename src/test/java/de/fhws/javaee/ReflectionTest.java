@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhws.javaee.fhws;
+package de.fhws.javaee;
 
 import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import java.lang.reflect.InvocationTargetException;
@@ -26,7 +26,7 @@ public class ReflectionTest {
     @Test
     public void createUserByReflection() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 
-        Class clazz = Class.forName("de.fhws.javaee.fhws.FHWSUser");
+        Class clazz = Class.forName("de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser");
         Object obj = clazz.newInstance();
         FHWSUser user = (FHWSUser) obj;
 
