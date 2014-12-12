@@ -7,23 +7,27 @@ package de.fhws.javaee.fhws.presentation;
 
 import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import de.fhws.javaee.fhws.business.usermanagement.boundary.UserService;
+import de.fhws.javaee.fhws.business.usermanagement.entity.LoggedInUser;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class LoginController implements Serializable {
 
-    @EJB
+    @Inject
     UserService userService;
 
     private String email;
@@ -38,6 +42,14 @@ public class LoginController implements Serializable {
     }
 
     public FHWSUser getUser() {
+        return user;
+    }
+
+    @Produces
+    @LoggedInUser
+    @SessionScoped
+    @Named
+    FHWSUser loggedInUser() {
         return user;
     }
 

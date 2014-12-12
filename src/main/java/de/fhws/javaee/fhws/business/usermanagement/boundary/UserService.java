@@ -7,13 +7,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @Stateless
 public class UserService {
 
-    @PersistenceContext
+    @Inject
+    PWService pwService;
+
+    @Inject
     EntityManager em;
 
     public List<FHWSUser> getAllFHWSUsers() {
@@ -41,7 +44,7 @@ public class UserService {
             return null;
         FHWSUser user = users.get(0);
 
-        if (!new PWService().checkPW(password, user.getPassword()))
+        if (!pwService.checkPW(password, user.getPassword()))
             return null;
 
         LoginStatistic ls = new LoginStatistic();

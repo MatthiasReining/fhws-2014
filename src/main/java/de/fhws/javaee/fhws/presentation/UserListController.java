@@ -8,17 +8,17 @@ package de.fhws.javaee.fhws.presentation;
 import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import de.fhws.javaee.fhws.business.usermanagement.boundary.UserService;
 import java.util.List;
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
  * @author Matthias Reining
  */
-@ManagedBean
+@Named
 public class UserListController {
 
-    @EJB
+    @Inject
     UserService userService;
 
     public List<FHWSUser> getUserList() {

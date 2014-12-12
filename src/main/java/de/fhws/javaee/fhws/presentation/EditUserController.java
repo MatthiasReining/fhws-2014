@@ -7,9 +7,10 @@ package de.fhws.javaee.fhws.presentation;
 
 import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import de.fhws.javaee.fhws.business.usermanagement.boundary.UserService;
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -20,11 +21,11 @@ import javax.transaction.SystemException;
  *
  * @author Matthias Reining
  */
-@ManagedBean
+@Named
 @SessionScoped
-public class EditUserController {
+public class EditUserController implements Serializable {
 
-    @EJB
+    @Inject
     UserService userService;
 
     private FHWSUser user;

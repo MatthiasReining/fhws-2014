@@ -13,8 +13,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-@Named("slsbTest")
-public class SLSBTest {
+@Named
+public class StatelesSessionBeanTest {
     
     @PersistenceContext
     EntityManager em;

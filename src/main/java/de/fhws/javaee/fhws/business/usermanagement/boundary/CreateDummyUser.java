@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
@@ -34,7 +35,7 @@ import javax.transaction.UserTransaction;
 @WebServlet(name = "CreateDummyUser", urlPatterns = {"/CreateDummyUser"})
 public class CreateDummyUser extends HttpServlet {
 
-    @PersistenceContext
+    @Inject
     EntityManager em;
     
     @Resource
