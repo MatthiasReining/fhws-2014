@@ -21,13 +21,17 @@ public class TestServletTest {
 
     @Before
     public void init() {
-
+        testServlet = new TestServlet();
+        
     }
 
     @Test
     public void shouldWork() {
-        testServlet = new TestServlet();
-        assertEquals(1000, testServlet.calculate(1000));
+        assertEquals(2000, testServlet.calculate(2000));
     }
 
+    @Test
+    public void shouldWork2() {
+        assertEquals(1000, testServlet.calculate(1000));
+    }
 }

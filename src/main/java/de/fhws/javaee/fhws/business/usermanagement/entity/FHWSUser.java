@@ -52,7 +52,7 @@ public class FHWSUser implements Serializable {
     private String street;
     private String housenumber;
 
-    @OneToMany(mappedBy = "fhwsUser", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "fhwsUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<LoginStatistic> loginStatistics;
 
     @Size(max = 10)
@@ -69,10 +69,6 @@ public class FHWSUser implements Serializable {
         this.email = email;
         this.password = password;
         this.lastLogin = lastLogin;
-    }
-
-    public boolean checkPassword(String testPassword) {
-        return new PWService().checkPW(testPassword, this.password);
     }
 
     public Long getId() {

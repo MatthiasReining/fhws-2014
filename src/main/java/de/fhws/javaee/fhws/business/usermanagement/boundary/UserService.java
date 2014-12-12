@@ -1,5 +1,6 @@
 package de.fhws.javaee.fhws.business.usermanagement.boundary;
 
+import de.fhws.javaee.fhws.business.usermanagement.controller.PWService;
 import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import de.fhws.javaee.fhws.business.usermanagement.entity.LoginStatistic;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class UserService {
             return null;
         FHWSUser user = users.get(0);
 
-        if (!user.checkPassword(password))
+        if (!new PWService().checkPW(password, user.getPassword()))
             return null;
 
         LoginStatistic ls = new LoginStatistic();
