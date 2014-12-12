@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhws.javaee.fhws;
+package de.fhws.javaee.fhws.showcase.servlets;
 
-import de.fhws.javaee.fhws.TestServlet;
+import de.fhws.javaee.fhws.showcase.servlets.TestServlet;
 import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;

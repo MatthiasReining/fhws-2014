@@ -1,6 +1,6 @@
 package de.fhws.javaee;
 
-import de.fhws.javaee.fhws.RegisterBeanRemote;
+import de.fhws.javaee.fhws.showcase.ejb.RegisterBeanRemote;
 import java.util.Hashtable;
 import java.util.Properties;
 import javax.naming.Context;

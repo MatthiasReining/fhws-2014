@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhws.javaee.fhws;
+package de.fhws.javaee.fhws.showcase.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,7 +37,7 @@ public class DBServlet extends HttpServlet {
 
         try {
             DataSource ds = (DataSource) InitialContext.doLookup("java:jboss/datasources/FHWS-DS");
-
+            
             Connection connection = ds.getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM TEST");

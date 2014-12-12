@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhws.javaee.fhws;
+package de.fhws.javaee.fhws.showcase.ejb;
 
+import de.fhws.javaee.fhws.showcase.jpa.LogInfo;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -19,6 +21,7 @@ public class ComplexService1 {
 
     @EJB
     ComplexService2 cl2;
+
 
     public int calculate(int input) {
         System.out.println("Start ComplexService1#calculate");

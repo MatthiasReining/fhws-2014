@@ -1,4 +1,4 @@
-package de.fhws.javaee.fhws;
+package de.fhws.javaee.fhws.showcase.jpa;
 
 import java.io.Serializable;
 import java.util.Date;

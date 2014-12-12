@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhws.javaee.fhws;
+package de.fhws.javaee.fhws.business.usermanagement.boundary;
 
 import de.fhws.javaee.fhws.business.usermanagement.controller.PWService;
 import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;

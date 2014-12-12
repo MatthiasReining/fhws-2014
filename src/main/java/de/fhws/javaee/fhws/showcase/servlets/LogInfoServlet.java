@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.fhws.javaee.fhws;
+package de.fhws.javaee.fhws.showcase.servlets;
 
+import de.fhws.javaee.fhws.showcase.jpa.LogInfo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
