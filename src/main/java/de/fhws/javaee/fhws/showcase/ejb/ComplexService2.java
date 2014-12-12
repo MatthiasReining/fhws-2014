@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -21,10 +20,12 @@ public class ComplexService2 {
     
     @PersistenceContext
     EntityManager em;
+    
 
     @Asynchronous
     public void calculate(int input) {
         System.out.println("Start ComplexService2#calculate");
+        
         LogInfo li = new LogInfo();
         li.setCreated(new Date());
         li.setMessage("in ComplexService2#calculate");
