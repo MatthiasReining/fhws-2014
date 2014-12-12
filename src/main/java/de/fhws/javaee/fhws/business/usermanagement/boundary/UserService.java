@@ -1,12 +1,14 @@
 package de.fhws.javaee.fhws.business.usermanagement.boundary;
 
 import de.fhws.javaee.fhws.business.usermanagement.controller.PWService;
+import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSLoginEvent;
 import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSUser;
 import de.fhws.javaee.fhws.business.usermanagement.entity.LoginStatistic;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -18,6 +20,9 @@ public class UserService {
 
     @Inject
     EntityManager em;
+    
+    @Inject
+    Event<FHWSLoginEvent> loginEvent;
 
     public List<FHWSUser> getAllFHWSUsers() {
         return em.createNamedQuery(FHWSUser.FIND_ALL, FHWSUser.class).getResultList();
@@ -56,7 +61,10 @@ public class UserService {
         user.getLoginStatistics().add(ls);
 
         user.setLastLogin(new Date());
-
+        
+        System.out.println("vor fire event");
+        loginEvent.fire(new FHWSLoginEvent(user));
+        System.out.println("nach fire event");
         return user;
 
     }
