@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>FHWS Angular Alternative</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-animate.js"></script>
+
+        <script src="app.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div ng-app="fhwsApp" ng-controller="userController">
+            
+            <h1>FHWS Angular Alternative</h1>
+            Version: {{info.version}} by {{info.developer}}
+            
+            <hr>
+            
+            Anzahl der User {{uses.length}}<br>
+            filter: <input type="search" ng-model="q" placeholder="filter users..." />
+            <ul class="example-animate-container">
+                <li class="animate-repeat" ng-repeat="user in users | filter:q">
+                    [{{$index + 1}}] {{user.firstname}} {{user.lastname}} ({{user.email}})
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
