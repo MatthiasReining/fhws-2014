@@ -11,23 +11,21 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @Stateless
-public class LogInfoService {
+@WebService(name = "loginfo")
+public class LogInfoWebService {
 
     @Inject
-    EntityManager em;
+    LogInfoService logInfoService;
 
     public List<LogInfo> getAll() {
-        return em.createNamedQuery(LogInfo.FIND_ALL, LogInfo.class).getResultList();
+        return logInfoService.getAll();
     }
 
-    public LogInfo getByMessage(String message) {
+    public LogInfo getByMessage(@WebParam(name = "message") String message) {
         System.out.println(message);
-        return em.createNamedQuery(LogInfo.QUERY_BY_MESSAGE, LogInfo.class)
-                .setParameter(LogInfo.PARAM_MESSAGE, message)
-                .getSingleResult();
+        return logInfoService.getByMessage(message);
     }
+
 }

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
@@ -23,7 +24,7 @@ public class LoginStatistic implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date loginTime;
     private String ipAddress;
-        
+    
     @ManyToOne
     private FHWSUser fhwsUser;
     
@@ -56,6 +57,7 @@ public class LoginStatistic implements Serializable {
         this.ipAddress = ipAddress;
     }
 
+    @XmlTransient
     public FHWSUser getFhwsUser() {
         return fhwsUser;
     }
