@@ -14,11 +14,12 @@ import org.junit.Test;
  * @author Matthias Reining
  */
 public class UserServiceTest {
-    UserService UserService;
+    UserService userService;
     
     @Before
     public void init() {
-        UserService.pwService = new PWService();
+        userService = new UserService();
+        userService.pwService = new PWService();
     }
     @Test
     public void shouldWork() {

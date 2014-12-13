@@ -5,7 +5,7 @@
  */
 package de.fhws.javaee.fhws.showcase.servlets;
 
-import de.fhws.javaee.fhws.showcase.jpa.LogInfo;
+import de.fhws.javaee.fhws.business.loginfo.entity.LogInfo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;

@@ -5,7 +5,7 @@
  */
 package de.fhws.javaee.fhws.showcase.ejb;
 
-import de.fhws.javaee.fhws.showcase.jpa.LogInfo;
+import de.fhws.javaee.fhws.business.loginfo.entity.LogInfo;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;

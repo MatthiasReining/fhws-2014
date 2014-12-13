@@ -6,7 +6,7 @@
 package de.fhws.javaee.fhws.business.usermanagement.controller;
 
 import de.fhws.javaee.fhws.business.usermanagement.entity.FHWSLoginEvent;
-import de.fhws.javaee.fhws.showcase.jpa.LogInfo;
+import de.fhws.javaee.fhws.business.loginfo.entity.LogInfo;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Observes;
